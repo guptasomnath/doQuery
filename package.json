@@ -1,0 +1,28 @@
+{
+  "name": "doquery",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build"
+  },
+  "keywords": [],
+  "author": "Somnath Gupta <somnathgupta112@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  },
+  "files": [
+    "build/**/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guptasomnath/doQuery.git"
+  },
+  "bugs": {
+    "url": "https://github.com/guptasomnath/doQuery/issues"
+  },
+  "homepage": "https://github.com/guptasomnath/doQuery#readme"
+}
