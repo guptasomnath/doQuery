@@ -30,9 +30,6 @@ npm run build
 
 `node index.js`
 
-![stape3](https://lh3.googleusercontent.com/d/1kMg800OM15dL_qDbF1SfHF0CVt-pPjcc)
-
-
 
 ## `build` files
 
