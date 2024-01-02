@@ -68,20 +68,11 @@ const requestHeader1 = {
   "Content-Type" : "application/json"
 }
 
-const requestHeader2 = {
-    "Content-Type" : "application/json"
-}
-
 const requestBody1 = {
   gmail : "usergmail@gmail.com",
   password : "userpassword"
 }
 
-const requestBody2 = {
-    gmail : "usergmail@gmail.com",
-    password : "userpassword"
-  }
-  
 
 const handleLoginBtn = async () => {
 
@@ -89,11 +80,11 @@ const handleLoginBtn = async () => {
   const url2 = "https://demo.com/getsecuritykey";
 
   const { responses, errors } = await doQueries({
-    urls : [url1, url2],
-    methods : ["POST", "GET"], // optional
-    headers : [requestHeader1, requestHeader2], //optional
-    bodies : [requestBody1, requestBody2], //optional,
-    caches : ["default", "force-cache"] //optional 
+    urls : [ url1, url2 ],
+    methods : [ "POST", "GET" ], // optional
+    headers : [ requestHeader1 ], //optional
+    bodies : [ requestBody1 ], //optional,
+    caches : [ "default", "force-cache" ] //optional 
   });
 
   if(errors.length != 0){
