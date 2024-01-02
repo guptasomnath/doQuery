@@ -1,7 +1,7 @@
 
-# Contributing to ReactPlayer
+# Contributing to doQuery
 
-Thanks for contributing to ReactPlayer!
+Thanks for contributing to doQuery!
 
 Running the demo locally is relatively easy:
 
