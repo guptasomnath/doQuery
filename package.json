@@ -8,7 +8,14 @@
     "build": "tsc",
     "prepare": "npm run build"
   },
-  "keywords": [],
+  "keywords": [
+    "fetch",
+    "fetch without try catch",
+    "http request",
+    "request handler",
+    "react doQuery",
+    "node doQuery"
+  ],
   "author": "Somnath Gupta <somnathgupta112@gmail.com>",
   "license": "MIT",
   "devDependencies": {
