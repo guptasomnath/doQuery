@@ -9,10 +9,22 @@ export interface ISingleQueryProps {
     cache?: CatchType;
 }
 
-export interface IMultiQueryProps {
+export interface IMultiQueriesProps {
     methods?: MethodType[];
     urls: string[];
     headers?: object[];
     bodies?: object[];
     caches?: CatchType[];
+}
+
+export interface ISingleQueryReturnRes<T, E> {
+    success: boolean;
+    response: T | null;
+    error: E | null;
+}
+
+export interface IMultipleQueriesReturnRes<T, E> {
+    success: boolean;
+    responses: T | null;
+    errors: E | null;
 }

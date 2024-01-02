@@ -1,3 +1,3 @@
 export { doQuery } from "./doQuery";
-export { doQuerys } from "./doQuerys";
+export { doQueries } from "./doQueries";
 

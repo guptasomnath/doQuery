@@ -1,17 +1,11 @@
-import { IMultiQueryProps, ISingleQueryProps } from "./types";
-
-export interface IDoQueryReturnResponse<T, E> {
-  success: boolean;
-  response: T | null;
-  error: E | null;
-}
+import { IMultiQueriesProps, IMultipleQueriesReturnRes, ISingleQueryProps, ISingleQueryReturnRes } from "./types";
 
 export const doSingleQuery = async <T, E = Error>(
   config: ISingleQueryProps
 ) => {
   const { url, method, header, body, cache } = config;
 
-  const returnObject: IDoQueryReturnResponse<T, E> = {
+  const returnObject: ISingleQueryReturnRes<T, E> = {
     success: false,
     error: null,
     response: null,
@@ -40,13 +34,13 @@ export const doSingleQuery = async <T, E = Error>(
   return returnObject;
 };
 
-export const doMultipleQuery = async <T, E = Error>(
-  config: IMultiQueryProps
+export const doMultipleQueries = async <T, E = Error>(
+  config: IMultiQueriesProps
 ) => {
-  const returnObject: IDoQueryReturnResponse<T, E> = {
+  const returnObject: IMultipleQueriesReturnRes<T, E> = {
     success: false,
-    error: null,
-    response: null,
+    errors: null,
+    responses: null,
   };
 
   const { urls, methods, headers, bodies, caches } = config;
@@ -71,15 +65,15 @@ export const doMultipleQuery = async <T, E = Error>(
     }));
   
     allPromiseReslts.forEach((item) => {
-      returnObject.response = item
+      returnObject.responses = item
     })
   
-    returnObject.response = allPromiseReslts.filter(item => !item.error) as T;
+    returnObject.responses = allPromiseReslts.filter(item => !item.error) as T;
     const errorsList = allPromiseReslts.filter(item => item.error);
-    returnObject.error = errorsList.map((item) => item.error) as E;
+    returnObject.errors = errorsList.map((item) => item.error) as E;
     
   } catch (error) {
-    returnObject.error = error as E;
+    returnObject.errors = error as E;
   }
 
   return returnObject;
