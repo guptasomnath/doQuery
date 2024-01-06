@@ -11,16 +11,26 @@ export const doSingleQuery = async <T, E = Error>(
     response: null,
   };
 
+  const requestConfig : any = {};
+  if(method){
+    requestConfig.method = method;
+  }
+  if(header && Object.keys(header).length !== 0){
+    requestConfig.headers = {
+      "Content-Type": "application/json",
+      ...header,
+    }
+  }
+  if(body && Object.keys(body).length !== 0){
+    requestConfig.body = JSON.stringify(body);
+  }
+
+  if(cache){
+    requestConfig.cache = cache;
+  }
+
   try {
-    const result = await fetch(url, {
-      method: method,
-      cache: cache,
-      headers: {
-        "Content-Type": "application/json",
-        ...header,
-      },
-      body: JSON.stringify(body),
-    });
+    const result = await fetch(url, requestConfig);
     returnObject.success = result.ok;
     if (result.ok) {
       returnObject.response = (await result.json()) as T;
@@ -46,16 +56,30 @@ export const doMultipleQueries = async <T, E = Error>(
   const { urls, methods, headers, bodies, caches } = config;
 
   try {
+    const responses = await Promise.all(urls.map((url, index) => {
+      
+      const requestConfig : any = {};
+      if(methods?.[index]){
+        requestConfig.method = methods?.[index];
+      }
 
-    const responses = await Promise.all(urls.map((url, index) => fetch(url, {
-      method : methods?.[index],
-      headers : {
-        "Content-Type" : "application/json",
-        ...headers?.[index]
-      },
-      body : JSON.stringify(bodies?.[index]),
-      cache : caches?.[index]
-    })));
+      if(headers?.[index] && Object.keys(headers?.[index]).length !== 0){
+        requestConfig.headers = {
+          "Content-Type": "application/json",
+          ...headers?.[index],
+        }
+      }
+      
+      if(bodies?.[index] && Object.keys(bodies?.[index]).length !== 0){
+        requestConfig.body = JSON.stringify(bodies?.[index]);
+      }
+
+      if(caches?.[index]){
+        requestConfig.cache = caches?.[index]
+      }
+
+      return fetch(url, requestConfig)
+    }));
     const allPromiseReslts = await Promise.all(responses.map(async response => {
       if(response.ok){
         return await response.json();
