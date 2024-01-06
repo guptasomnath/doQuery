@@ -47,13 +47,18 @@ export const doSingleQuery = async <T, E = Error>(
 export const doMultipleQueries = async <T, E = Error>(
   config: IMultiQueriesProps
 ) => {
+
+  const { urls, methods, headers, bodies, caches } = config;
+  const successesArray : boolean[] = [];
+  urls.forEach(() => {
+    successesArray.push(false);
+  })
+
   const returnObject: IMultipleQueriesReturnRes<T, E> = {
-    success: false,
+    successes: successesArray,
     errors: null,
     responses: null,
   };
-
-  const { urls, methods, headers, bodies, caches } = config;
 
   try {
     const responses = await Promise.all(urls.map((url, index) => {
@@ -80,10 +85,12 @@ export const doMultipleQueries = async <T, E = Error>(
 
       return fetch(url, requestConfig)
     }));
-    const allPromiseReslts = await Promise.all(responses.map(async response => {
+    const allPromiseReslts = await Promise.all(responses.map(async (response, index) => {
       if(response.ok){
+        successesArray[index] = true;
         return await response.json();
       }else{
+        successesArray[index] = false;
         return {error : await response.json()};
       }
     }));

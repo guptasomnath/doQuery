@@ -24,7 +24,7 @@ export interface ISingleQueryReturnRes<T, E> {
 }
 
 export interface IMultipleQueriesReturnRes<T, E> {
-    success: boolean;
+    successes: boolean[];
     responses: T | null;
     errors: E | null;
 }

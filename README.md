@@ -37,9 +37,9 @@ const requestBody = {
   password : "userpassword"
 }
 
-const handleLoginBtn = async () => {
+const handleSingleRequest = async () => {
 
-  const { response, error } = await doQuery({
+  const { success, response, error } = await doQuery({
     url : "https://demo.com/login",
     method : "POST", // optional. default is GET
     header : requestHeader, //optional
@@ -47,7 +47,7 @@ const handleLoginBtn = async () => {
     cache : "default" //optional 
   });
 
-  if(error){
+  if(!success){
       setError(error?.message)
       return;
   }
@@ -74,12 +74,12 @@ const requestBody1 = {
 }
 
 
-const handleLoginBtn = async () => {
+const handleMultipleRequests = async () => {
 
   const url1 = "https://demo.com/login";
   const url2 = "https://demo.com/getsecuritykey";
 
-  const { responses, errors } = await doQueries({
+  const { successes, responses, errors } = await doQueries({
     urls : [ url1, url2 ],
     methods : [ "POST", "GET" ], // optional
     headers : [ requestHeader1 ], //optional
@@ -87,10 +87,17 @@ const handleLoginBtn = async () => {
     caches : [ "default", "force-cache" ] //optional 
   });
 
-  if(errors.length != 0){
-      errorList(errors)
-      return;
+  // if(errors.length != 0){
+  //     errorList(errors)
+  //     return;
+  // }
+ 
+  const isAnyError = successes.includes(false);
+  if(isAnyError){
+    errorList(errors);
+    return;
   }
+
   responseList(responses)
 
 }
