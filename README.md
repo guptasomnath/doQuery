@@ -13,10 +13,10 @@ This library simplifies HTTP requests in any Node.js project. Say goodbye to try
 Install doQuery library in any node js project
 
 ```bash
-  npm i doquery 
+npm i doquery 
 ```
 ```bash
- yarn add doquery
+yarn add doquery
 ```
 
 
