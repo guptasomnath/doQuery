@@ -1,7 +1,7 @@
 {
   "name": "doquery",
-  "version": "1.0.1",
-  "description": "",
+  "version": "1.0.2",
+  "description": "This library simplifies HTTP requests in any Node.js project. Say goodbye to try-catch complications, and easily handle multiple HTTP requests also.",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {
@@ -26,7 +26,8 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/guptasomnath/doQuery.git"
+    "url": "git+https://github.com/guptasomnath/doQuery.git",
+    "homepage" : "https://github.com/guptasomnath/doQuery#readme"
   },
   "bugs": {
     "url": "https://github.com/guptasomnath/doQuery/issues"

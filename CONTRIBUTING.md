@@ -33,6 +33,6 @@ npm run build
 
 ## `build` files
 
-There is **no need** to build or commit files in `build` after making changes. The `build` files are only there for [bower](http://bower.io) support, and there is very little point in polluting every commit or pull request with the changes. The `build` files will be automatically built and committed when new versions are released, so your changes will be included then.
+There is **no need** to build or commit files in `build` after making changes.
 
 

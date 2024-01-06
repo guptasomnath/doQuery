@@ -1,7 +1,7 @@
 
 # Do Query library
 
-A node js library which help you to do http request in a very easy way
+This library simplifies HTTP requests in any Node.js project. Say goodbye to try-catch complications, and easily handle multiple HTTP requests also.
 
 
 

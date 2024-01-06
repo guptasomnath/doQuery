@@ -1,12 +1,12 @@
 export type MethodType = "GET" | "POST" | "PUT" | "DELETE";
-export type CatchType = "default" | "force-cache" | "no-cache" | "no-store" | "only-if-cached" | "reload";
+export type CacheType = "default" | "force-cache" | "no-cache" | "no-store" | "only-if-cached" | "reload";
 
 export interface ISingleQueryProps {
     method?: MethodType;
     url: string;
     header?: object;
     body?: object;
-    cache?: CatchType;
+    cache?: CacheType;
 }
 
 export interface IMultiQueriesProps {
@@ -14,7 +14,7 @@ export interface IMultiQueriesProps {
     urls: string[];
     headers?: object[];
     bodies?: object[];
-    caches?: CatchType[];
+    caches?: CacheType[];
 }
 
 export interface ISingleQueryReturnRes<T, E> {
