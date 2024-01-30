@@ -20,7 +20,12 @@ export const doSingleQuery = async <T, E = Error>(
       "Content-Type": "application/json",
       ...header,
     }
+  }else{
+    requestConfig.headers = {
+      "Content-Type": "application/json"
+    }
   }
+
   if(body && Object.keys(body).length !== 0){
     requestConfig.body = JSON.stringify(body);
   }
@@ -72,6 +77,10 @@ export const doMultipleQueries = async <T, E = Error>(
         requestConfig.headers = {
           "Content-Type": "application/json",
           ...headers?.[index],
+        }
+      }else{
+        requestConfig.headers = {
+          "Content-Type": "application/json"
         }
       }
       
