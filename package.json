@@ -1,6 +1,6 @@
 {
   "name": "doquery",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "This library simplifies HTTP requests in any Node.js project. Say goodbye to try-catch complications, and easily handle multiple HTTP requests also.",
   "main": "build/index.js",
   "types": "build/index.d.ts",
